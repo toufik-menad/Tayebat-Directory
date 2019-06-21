@@ -1,7 +1,7 @@
 /*
  *
  *
- * Copyright (c) 2018, CGI.
+ * Copyright (c) 2018.
  */
 package core.com.entity;
 
