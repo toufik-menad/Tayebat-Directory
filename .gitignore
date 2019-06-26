@@ -160,6 +160,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 core/src/main/resources/application-prod.properties
-
+RestServices/src/main/resources/application-prod.properties
 # End of https://www.gitignore.io/api/git,java,maven,eclipse,windows
 /cli.md
+
