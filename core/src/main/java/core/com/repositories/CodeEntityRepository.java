@@ -8,13 +8,14 @@ package core.com.repositories;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import core.com.entity.FileEntity;
+import core.com.entity.CodeEntity;
 
 /**
  * @author T.Menad
  */
-@Service
-public interface FileRepository extends JpaRepository<FileEntity, UUID>{
+@Repository
+public interface CodeEntityRepository extends JpaRepository<CodeEntity, UUID>{
+
 }

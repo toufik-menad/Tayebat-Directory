@@ -1,19 +1,11 @@
 package com;
-import java.io.File;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.services.SourceLoaderService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,9 +13,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -49,15 +38,10 @@ public class Application  implements CommandLineRunner{
     }
     
     
-    @Autowired
-    private SourceLoaderService sourceLoaderService;
         
     @Value("${dump.file.name}")
     private String fileName;
     
-    
-    @Autowired
-    ResourceLoader resourceLoader;
     
     
     
@@ -84,8 +68,5 @@ public class Application  implements CommandLineRunner{
         System.out.println(name.get("ingredients"));
         
         System.out.println(name.get("ingredients_text_with_allergens_fr"));
-        
-        //sourceLoaderService.loadFile(url, "../"+fileName);
-        sourceLoaderService.persistCodes("../codes.csv");
     }
 }

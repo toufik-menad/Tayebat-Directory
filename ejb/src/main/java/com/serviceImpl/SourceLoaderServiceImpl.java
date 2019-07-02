@@ -3,9 +3,7 @@
  */
 package com.serviceImpl;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.net.MalformedURLException;
@@ -23,12 +21,11 @@ import org.slf4j.LoggerFactory;
 import org.apache.commons.io.FileUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
+import core.com.entity.CodeEntity;
 import core.com.pojo.CodePojo;
-import core.com.repositories.FileRepository;
+import core.com.repositories.CodeEntityRepository;
 
 /**
  * @author T.Menad
@@ -37,9 +34,11 @@ import core.com.repositories.FileRepository;
 public class SourceLoaderServiceImpl implements SourceLoaderService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
+    
+    private static final String MESSAGE = "Import codes interrupted";
 
     @Autowired
-    private FileRepository fileRepository;
+    private CodeEntityRepository codeEntityRepository;
 
     /**
      * {@inheritDoc}
@@ -63,17 +62,18 @@ public class SourceLoaderServiceImpl implements SourceLoaderService {
     public void persistCodes(final String filePath) throws Exception {
 
         try {
-            
-            final BufferedReader br = new BufferedReader(new FileReader(filePath));
             final Reader reader = Files.newBufferedReader(Paths.get(filePath));
             final CsvToBean<CodePojo> csvToBean = new CsvToBeanBuilder<CodePojo>(reader).withType(CodePojo.class).withIgnoreLeadingWhiteSpace(
                     true).build();
             csvToBean.forEach(pojo -> {
                 logger.info("pojo code: {}", pojo.getCode());
+                final CodeEntity codeEntity = new CodeEntity();
+                codeEntity.setCode(pojo.getCode());
+                codeEntityRepository.save(codeEntity);
             });
 
         } catch (final IOException ex) {
-            throw new Exception("throw");
+            throw new Exception(MESSAGE);
         }
     }
 
