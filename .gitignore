@@ -165,7 +165,3 @@ RestServices/src/main/resources/application-prod.properties
 /cli.md
 
 /bootstrap.sh
-<<<<<<< HEAD
-=======
-/codes.csv
->>>>>>> refs/heads/feat(FileLoaderService)
