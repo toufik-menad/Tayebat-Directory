@@ -2,7 +2,7 @@ pipeline {
     stages {
         stage('build') {
             steps{
-                sh 'echo "inside Rest folder . . .."'
+                sh ' echo "inside Rest folder . . .."'
             }
         }
     }
