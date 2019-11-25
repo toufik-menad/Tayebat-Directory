@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('build') {
             steps{
-                sh 'cd RestServices'
                 sh ' mvn clean package'
             }
         }
