@@ -1,7 +1,4 @@
-/**
- * 
- */
-package core;
+package com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,16 +9,19 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
- * @author MENAD
- *
+ * @author T.Menad
  */
-//@ComponentScan({"com.*" })
-@SpringBootApplication(scanBasePackages = {"com.*" })
-//@EnableAutoConfiguration
-//@EnableWebMvc
-//@EnableJpaRepositories({"com.*" })
-//@EntityScan({"com.*" })
-public class Application  {
+/**
+ * @author MENAD
+ */
+@SpringBootApplication(scanBasePackages = "com.*")
+@EnableAutoConfiguration
+@EnableWebMvc
+@ComponentScan({"com.*" })
+@EnableJpaRepositories({"core.com.*" })
+@EntityScan({"core.com.*" })
+
+public class Application {
 
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
