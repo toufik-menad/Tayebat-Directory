@@ -3,7 +3,7 @@ pipeline {
         stage('build') {
             steps{
                 sh 'cd ResServices'
-                sh 'echo "inside Rest"'
+                sh 'echo "inside Rest folder"'
             }
         }
     }
