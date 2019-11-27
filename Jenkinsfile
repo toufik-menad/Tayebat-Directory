@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps{
-                sh ' echo "test passed"'
+                sh ' mvn clean install'
             }
         }
     }
