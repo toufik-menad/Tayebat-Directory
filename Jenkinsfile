@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps{
-                sh ' cd ResetServices'
+                sh ' cd RestServices'
                 sh 'mvn clean install'
             }
         }
