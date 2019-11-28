@@ -15,15 +15,12 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-
 	<modules>
 		<module>core</module>
 		<module>RestServices</module>
 		<module>ejb</module>
 		<module>common</module>
 	</modules>
-
-
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
