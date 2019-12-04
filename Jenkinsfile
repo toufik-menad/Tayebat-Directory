@@ -4,7 +4,8 @@ pipeline {
         stage('build') {
             steps{
                 sh ' cd RestServices'
-                sh 'mvn clean install'
+                sh 'mvn clean'
+                sh 'mvn package'
             }
         }
     }
