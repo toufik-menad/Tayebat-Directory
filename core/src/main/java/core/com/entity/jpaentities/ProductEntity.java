@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2018, Menad Tawfiq.
  */
-package core.com.entity;
+package core.com.entity.jpaentities;
 
 import java.util.UUID;
 
@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "codes")
-public class CodeEntity {
+public class ProductEntity {
 
     @Id
     private UUID id;
@@ -26,7 +26,7 @@ public class CodeEntity {
     /**
      * No args constructor.
      */
-    public CodeEntity() {
+    public ProductEntity() {
     }
 
     /**
@@ -35,7 +35,7 @@ public class CodeEntity {
      * @param id
      * @param code
      */
-    public CodeEntity(final UUID id, final String code) {
+    public ProductEntity(final UUID id, final String code) {
         this.id = id;
         this.code = code;
     }

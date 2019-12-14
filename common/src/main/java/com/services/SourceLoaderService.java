@@ -6,8 +6,6 @@ package com.services;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-import org.springframework.core.io.PathResource;
-
 /**
  * @author T.Menad
  */

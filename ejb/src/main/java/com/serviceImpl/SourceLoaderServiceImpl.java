@@ -23,9 +23,9 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import core.com.entity.CodeEntity;
+import core.com.entity.jpaentities.ProductEntity;
 import core.com.pojo.CodePojo;
-import core.com.repositories.CodeEntityRepository;
+import core.com.repositories.jparepositories.CodeEntityRepository;
 
 /**
  * @author T.Menad
@@ -67,9 +67,9 @@ public class SourceLoaderServiceImpl implements SourceLoaderService {
                     true).build();
             csvToBean.forEach(pojo -> {
                 logger.info("pojo code: {}", pojo.getCode());
-                final CodeEntity codeEntity = new CodeEntity();
-                codeEntity.setCode(pojo.getCode());
-                codeEntityRepository.save(codeEntity);
+                final ProductEntity productEntity = new ProductEntity();
+                productEntity.setCode(pojo.getCode());
+                codeEntityRepository.save(productEntity);
             });
 
         } catch (final IOException ex) {
