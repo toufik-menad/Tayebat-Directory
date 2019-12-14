@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2018, Menad Tawfiq.
  */
-package entities.mongoentities;
+package core.com.entities.mongoentities;
 
 import java.util.ArrayList;
 import java.util.List;

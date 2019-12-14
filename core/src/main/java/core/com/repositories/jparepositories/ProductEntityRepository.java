@@ -10,12 +10,12 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import entities.jpaentities.ProductEntity;
+import core.com.entities.jpaentities.ProductEntity;
 
 /**
  * @author T.Menad
  */
 @Repository
-public interface CodeEntityRepository extends JpaRepository<ProductEntity, UUID>{
+public interface ProductEntityRepository extends JpaRepository<ProductEntity, UUID>{
 
 }

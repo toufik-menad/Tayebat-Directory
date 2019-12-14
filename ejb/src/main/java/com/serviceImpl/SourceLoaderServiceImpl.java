@@ -23,9 +23,9 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import core.com.entities.jpaentities.ProductEntity;
 import core.com.pojo.CodePojo;
-import core.com.repositories.jparepositories.CodeEntityRepository;
-import entities.jpaentities.ProductEntity;
+import core.com.repositories.jparepositories.ProductEntityRepository;
 
 /**
  * @author T.Menad
@@ -38,7 +38,7 @@ public class SourceLoaderServiceImpl implements SourceLoaderService {
     private static final String MESSAGE = "Import codes interrupted";
 
     @Autowired
-    private CodeEntityRepository codeEntityRepository;
+    private ProductEntityRepository productEntityRepository;
 
     /**
      * {@inheritDoc}
@@ -69,7 +69,7 @@ public class SourceLoaderServiceImpl implements SourceLoaderService {
                 logger.info("pojo code: {}", pojo.getCode());
                 final ProductEntity productEntity = new ProductEntity();
                 productEntity.setCode(pojo.getCode());
-                codeEntityRepository.save(productEntity);
+                productEntityRepository.save(productEntity);
             });
 
         } catch (final IOException ex) {

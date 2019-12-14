@@ -8,12 +8,12 @@ package core.com.repositories.mongorepositories;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
 
-import entities.mongoentities.ProductDocument;
+import core.com.entities.mongoentities.ProductDocument;
 
 /**
  * @author T.Menad
  */
 @Service
-public interface ProductRepository extends MongoRepository<ProductDocument, String>{
+public interface ProductDocumentRepository extends MongoRepository<ProductDocument, String>{
 
 }
