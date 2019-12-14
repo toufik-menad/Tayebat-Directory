@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2018, Menad Tawfiq.
  */
-package core.com.entity.jpaentities;
+package entities.jpaentities;
 
 import java.util.UUID;
 

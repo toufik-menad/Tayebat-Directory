@@ -23,9 +23,9 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import core.com.entity.jpaentities.ProductEntity;
 import core.com.pojo.CodePojo;
 import core.com.repositories.jparepositories.CodeEntityRepository;
+import entities.jpaentities.ProductEntity;
 
 /**
  * @author T.Menad

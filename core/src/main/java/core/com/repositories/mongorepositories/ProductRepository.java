@@ -8,7 +8,7 @@ package core.com.repositories.mongorepositories;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
 
-import core.com.mongoentities.ProductDocument;
+import entities.mongoentities.ProductDocument;
 
 /**
  * @author T.Menad

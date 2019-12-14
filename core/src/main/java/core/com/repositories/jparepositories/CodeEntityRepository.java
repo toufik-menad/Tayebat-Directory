@@ -10,7 +10,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import core.com.entity.jpaentities.ProductEntity;
+import entities.jpaentities.ProductEntity;
 
 /**
  * @author T.Menad
