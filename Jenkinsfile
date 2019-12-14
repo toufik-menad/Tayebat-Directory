@@ -6,6 +6,7 @@ pipeline {
                 sh ' cd RestServices'
                 sh 'mvn clean'
                 sh 'mvn package'
+                sh 'echo "####### Build is done ##########"'
             }
         }
     }
