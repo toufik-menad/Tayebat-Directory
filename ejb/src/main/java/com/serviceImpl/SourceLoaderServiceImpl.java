@@ -34,7 +34,7 @@ import core.com.repositories.jparepositories.ProductEntityRepository;
 public class SourceLoaderServiceImpl implements SourceLoaderService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     private static final String MESSAGE = "Import codes interrupted";
 
     @Autowired
