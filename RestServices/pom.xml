@@ -14,20 +14,20 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<dependencies>
-	<dependency>
-		<groupId>com.tayebat.com</groupId>
-		<artifactId>common</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</dependency>
-	<dependency>
-		<groupId>com.tayebat.com</groupId>
-		<artifactId>ejb</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</dependency>
+		<dependency>
+			<groupId>com.tayebat.com</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tayebat.com</groupId>
+			<artifactId>ejb</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -47,23 +47,22 @@
 					</execution>
 				</executions>
 			</plugin>
-	<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-surefire-plugin</artifactId>
-	</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.springframework.boot</groupId> -->
-<!-- 				<artifactId>spring-boot-maven-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<executable>true</executable> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
+			<!-- <configuration> -->
+			<!-- <executable>true</executable> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-<!-- 					<source>${jdk.version}</source>
-					<target>${jdk.version}</target> -->
+					<!-- <source>${jdk.version}</source> <target>${jdk.version}</target> -->
 				</configuration>
 			</plugin>
 		</plugins>

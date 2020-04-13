@@ -18,10 +18,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication(scanBasePackages = "com.*")
 @EnableAutoConfiguration
 @EnableWebMvc
-@ComponentScan({"com.*" })
-@EnableJpaRepositories({"core.com.*" })
-@EnableMongoRepositories({"core.com.*" })
-@EntityScan({"core.com.*" })
+@ComponentScan({"com.*","core.com.*" })
+@EnableJpaRepositories({"core.com.*","com.*" })
+@EnableMongoRepositories({"core.com.*","com.*" })
+@EntityScan({"core.com.*" ,"com.*"})
 
 public class Application {
 
