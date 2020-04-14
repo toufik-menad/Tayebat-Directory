@@ -7,10 +7,13 @@ package com.batch;
 
 
 
+import com.services.ConverterService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import core.com.entities.jpaentities.ProductEntity;
@@ -23,6 +26,9 @@ import core.com.entities.mongoentities.ProductDocument;
 public class ProductDocumentProcessor implements ItemProcessor<ProductDocument,ProductEntity>{
     
     Logger logger = LoggerFactory.getLogger(getClass());
+    
+    @Autowired
+    private ConverterService converterService;
 
     /**
      * @param productDocument {@link ProductDocument}
