@@ -33,7 +33,7 @@ public class ProductDocumentProcessor implements ItemProcessor<ProductDocument,P
     public ProductEntity process(ProductDocument productDocument) throws Exception {
         final ProductEntity productEntity = new ProductEntity();
         productEntity.setCode(productDocument.get_id());
-        logger.info("=======================================");
+        logger.info("Processign product id {} with thread {}: ", productDocument.get_id(), Thread.currentThread().getName());
         return productEntity;
     }
     

@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.transaction.Transactional;
 
 import com.mongodb.MongoClient;
+import com.properties.ApplicationProperties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +23,11 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.data.MongoItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -53,8 +57,7 @@ public class BatchConfiguration {
     
     @Autowired
     public ProductDocumentProcessor productDocumentProcessor;
-    
-    
+          
     
     Logger logger = LoggerFactory.getLogger(getClass());
     
@@ -73,8 +76,16 @@ public class BatchConfiguration {
     
     @Bean
     public MongoDbFactory mongoDbFactory() throws Exception {
-        return new SimpleMongoDbFactory(new MongoClient(), "MONGO_DB");
+        return new SimpleMongoDbFactory(new MongoClient(), getApplicationProperties().getMONGO_DATABASE_NAME());
     }
+    
+    
+    @Bean
+    @ConfigurationProperties(prefix = "tayebat")
+    public ApplicationProperties getApplicationProperties() {
+        return new ApplicationProperties();
+    }
+    
     
     @Bean
     public MongoTemplate mongoTemplate() throws Exception {
@@ -82,7 +93,13 @@ public class BatchConfiguration {
         return mongoTemplate;
     }
     
-
+    @Bean
+    public TaskExecutor taskExecutor(){
+        SimpleAsyncTaskExecutor asyncTaskExecutor=new SimpleAsyncTaskExecutor("spring_batch");
+        asyncTaskExecutor.setConcurrencyLimit(5);
+        return asyncTaskExecutor;
+    }
+    
            
     @Bean
     public Step importStep() throws Exception {
@@ -91,6 +108,7 @@ public class BatchConfiguration {
                 .reader(mongoItemReader())
                 .processor(productDocumentProcessor)
                 .writer(productEntityWriter)
+                .taskExecutor(taskExecutor())
                 .build();
     }
     

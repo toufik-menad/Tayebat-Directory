@@ -22,6 +22,15 @@ public class ProductDocument {
     private String _id;
     private String states ;
     private List<String>informers_tags = new ArrayList<>();
+    private List<String>ingredients = new ArrayList<>();
+    
+    /**
+     * Getter for ingredients.
+     * @return the ingredients
+     */
+    public List<String> getIngredients() {
+        return ingredients;
+    }
     /**
      * Getter for _id.
      * @return the _id
