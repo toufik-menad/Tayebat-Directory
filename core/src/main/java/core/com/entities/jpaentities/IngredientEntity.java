@@ -33,6 +33,27 @@ public class IngredientEntity {
     private ProductEntity productEntity;
     
     /**
+     * 
+     */
+    public IngredientEntity() {
+    }
+    
+    /**
+     * @param uuid
+     * @param id
+     * @param rank
+     * @param text
+     * @param productEntity
+     */
+    public IngredientEntity(UUID uuid, String id, int rank, String text, ProductEntity productEntity) {
+        this.uuid = uuid;
+        this.id = id;
+        this.rank = rank;
+        this.text = text;
+        this.productEntity = productEntity;
+    }
+
+    /**
      * Getter for uuid.
      * @return the uuid
      */

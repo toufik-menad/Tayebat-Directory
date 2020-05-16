@@ -12,7 +12,7 @@ pipeline {
 
             stage('run') {
             steps{
-                sh 'java -jar RestServices/target/RestServices-1.0.0-SNAPSHOT-spring-boot.jar --spring.config.location=RestServices/src/main/resources/application-prod.properties'
+                sh 'sudo systemctl start tayebat'
                  }
                          }
 

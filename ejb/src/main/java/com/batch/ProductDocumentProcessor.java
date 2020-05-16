@@ -28,7 +28,7 @@ public class ProductDocumentProcessor implements ItemProcessor<ProductDocument,P
     Logger logger = LoggerFactory.getLogger(getClass());
     
     @Autowired
-    private ConverterService converterService;
+    private ConverterService<ProductDocument,ProductEntity> converterService;
 
     /**
      * @param productDocument {@link ProductDocument}
@@ -40,7 +40,7 @@ public class ProductDocumentProcessor implements ItemProcessor<ProductDocument,P
         final ProductEntity productEntity = new ProductEntity();
         productEntity.setCode(productDocument.get_id());
         logger.info("Processign product id {} with thread {}: ", productDocument.get_id(), Thread.currentThread().getName());
-        return productEntity;
+        return converterService.convertToProductEntity(productDocument);
     }
     
    

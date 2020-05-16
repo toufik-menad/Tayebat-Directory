@@ -1,6 +1,4 @@
 /*
- *
- *
  * Copyright (c) 2018, Menad Tawfiq.
  */
 package com.batch;
@@ -48,21 +46,20 @@ public class BatchConfiguration {
 
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
+
+    @Autowired
+    public ProductEntityWriter productEntityWriter;
+
+    @Autowired
+    public ProductDocumentProcessor productDocumentProcessor;
     
     @Autowired
     public MongoTemplate mongoTemplate;
-    
-    @Autowired
-    public ProductEntityWriter productEntityWriter;
-    
-    @Autowired
-    public ProductDocumentProcessor productDocumentProcessor;
-          
-    
+
     Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     @Bean
-    public MongoItemReader<ProductDocument> mongoItemReader() throws Exception{
+    public MongoItemReader<ProductDocument> mongoItemReader() throws Exception {
         MongoItemReader<ProductDocument> mongoItemReader = new MongoItemReader<>();
         mongoItemReader.setTemplate(mongoTemplate());
         mongoItemReader.setCollection("PRODUCTS");
@@ -73,52 +70,40 @@ public class BatchConfiguration {
         mongoItemReader.setSort(sort);
         return mongoItemReader;
     }
-    
+
     @Bean
     public MongoDbFactory mongoDbFactory() throws Exception {
         return new SimpleMongoDbFactory(new MongoClient(), getApplicationProperties().getMONGO_DATABASE_NAME());
     }
-    
-    
+
     @Bean
     @ConfigurationProperties(prefix = "tayebat")
     public ApplicationProperties getApplicationProperties() {
         return new ApplicationProperties();
     }
-    
-    
+
     @Bean
     public MongoTemplate mongoTemplate() throws Exception {
         MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
         return mongoTemplate;
     }
-    
+
     @Bean
-    public TaskExecutor taskExecutor(){
-        SimpleAsyncTaskExecutor asyncTaskExecutor=new SimpleAsyncTaskExecutor("spring_batch");
+    public TaskExecutor taskExecutor() {
+        SimpleAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor("spring_batch");
         asyncTaskExecutor.setConcurrencyLimit(5);
         return asyncTaskExecutor;
     }
-    
-           
+
     @Bean
     public Step importStep() throws Exception {
-        return stepBuilderFactory.get("importStep")
-                .<ProductDocument,ProductEntity> chunk(10)
-                .reader(mongoItemReader())
-                .processor(productDocumentProcessor)
-                .writer(productEntityWriter)
-                .taskExecutor(taskExecutor())
-                .build();
+        return stepBuilderFactory.get("importStep").<ProductDocument, ProductEntity> chunk(10).reader(mongoItemReader()).processor(
+                productDocumentProcessor).writer(productEntityWriter).taskExecutor(taskExecutor()).build();
     }
-    
-    
+
     @Bean
     public Job importProductDocuments() throws Exception {
-        return jobBuilderFactory.get("importProductDocuments")
-                .start(importStep())
-                .build();
+        return jobBuilderFactory.get("importProductDocuments").start(importStep()).build();
     }
-    
 
 }
