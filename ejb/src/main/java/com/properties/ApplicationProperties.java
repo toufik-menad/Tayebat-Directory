@@ -23,8 +23,8 @@ public class ApplicationProperties {
      * Setter for mONGO_DATABASE_NAME.
      * @param mONGO_DATABASE_NAME the mONGO_DATABASE_NAME to set
      */
-    public void setMONGO_DATABASE_NAME(String mONGO_DATABASE_NAME) {
-        MONGO_DATABASE_NAME = mONGO_DATABASE_NAME;
+    public void setMONGO_DATABASE_NAME(String MONGO_DATABASE_NAME) {
+        this.MONGO_DATABASE_NAME = MONGO_DATABASE_NAME;
     }
     
 

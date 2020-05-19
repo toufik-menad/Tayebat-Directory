@@ -17,5 +17,10 @@ import core.com.entities.jpaentities.ProductEntity;
  */
 @Repository
 public interface ProductEntityRepository extends JpaRepository<ProductEntity, UUID>{
-
+    
+    /**finds a product entity by its code.
+     * @param code String
+     * @return
+     */
+    ProductEntity findByCode(final String code);
 }

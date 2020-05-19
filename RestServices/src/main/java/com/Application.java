@@ -1,10 +1,5 @@
 package com;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import core.com.repositories.mongorepositories.ProductDocumentRepository;
 
 /**
  * @author T.Menad
@@ -30,28 +23,9 @@ import core.com.repositories.mongorepositories.ProductDocumentRepository;
 @EnableMongoRepositories({"core.com.*","com.*" })
 @EntityScan({"core.com.*" ,"com.*"})
 
-public class Application implements CommandLineRunner{
+public class Application {
 
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    
-//    @Autowired
-//    private ProductDocumentRepository repo;
-//    
-//    private Logger logger = LoggerFactory.getLogger(getClass());
-
-    /**
-     * @param args
-     * @throws Exception
-     */
-    @Override
-    public void run(String... args) throws Exception {
-//        repo.findByCode("0067275001132").get(0).getIngredients().
-//        forEach(x ->{
-//            logger.info(" Ingredient: {}", x);
-//        });
-        
-    }
-
 }

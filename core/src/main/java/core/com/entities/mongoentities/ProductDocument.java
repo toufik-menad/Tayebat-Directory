@@ -22,8 +22,10 @@ public class ProductDocument {
     private String _id;
     private String code;
     private String states ;
+    private String ingredients_text;
     private List<String>informers_tags = new ArrayList<>();
     private List<String>ingredients = new ArrayList<>();
+    private String product_name;
     
     /**
      * Getter for code.
@@ -95,4 +97,33 @@ public class ProductDocument {
     public List<String> getInformers_tags() {
         return informers_tags;
     }
+    /**
+     * Getter for ingredients_text.
+     * @return the ingredients_text
+     */
+    public String getIngredients_text() {
+        return ingredients_text;
+    }
+    /**
+     * Setter for ingredients_text.
+     * @param ingredients_text the ingredients_text to set
+     */
+    public void setIngredients_text(String ingredients_text_en) {
+        this.ingredients_text = ingredients_text_en;
+    }
+    /**
+     * Getter for product_name.
+     * @return the product_name
+     */
+    public String getProduct_name() {
+        return product_name;
+    }
+    /**
+     * Setter for product_name.
+     * @param product_name the product_name to set
+     */
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+    
 }

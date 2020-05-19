@@ -7,6 +7,7 @@ package core.com.entities.jpaentities;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,13 +24,17 @@ import javax.persistence.Table;
 public class IngredientEntity {
     @Id
     private UUID uuid;
-    @Column()
+    
+    @Column(length=2000)
     private String id;
+    
     @Column(name = "`rank`")
     private int rank;
-    @Column()
+    
+    @Column(length=2000)
     private String text;
-    @ManyToOne(fetch = FetchType.LAZY)
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private ProductEntity productEntity;
     
     /**
