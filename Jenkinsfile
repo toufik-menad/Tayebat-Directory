@@ -14,7 +14,7 @@ pipeline {
             steps{
                 sh 'sudo systemctl start tayebat'
                  }
-                         }
+                     }
 
 
 
