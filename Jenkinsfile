@@ -12,7 +12,7 @@ pipeline {
 
             stage('run') {
             steps{
-                sh 'sudo systemctl start tayebat'
+                sh 'sudo systemctl restart tayebat'
                  }
                      }
 

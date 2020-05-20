@@ -97,7 +97,7 @@ public class BatchConfiguration {
 
     @Bean
     public Step importStep() throws Exception {
-        return stepBuilderFactory.get("importStep").<ProductDocument, ProductEntity> chunk(100).reader(mongoItemReader()).processor(
+        return stepBuilderFactory.get("importStep").<ProductDocument, ProductEntity> chunk(10).reader(mongoItemReader()).processor(
                 productDocumentProcessor).writer(productEntityWriter).taskExecutor(taskExecutor()).build();
     }
 
