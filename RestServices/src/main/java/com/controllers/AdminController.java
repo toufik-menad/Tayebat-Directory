@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author T.Menad
  */
 @RestController
-@RequestMapping("admin")
+@RequestMapping(value = "admin")
 public class AdminController {
     private Logger logger = LoggerFactory.getLogger(getClass());
     

@@ -5,6 +5,7 @@ package com.batch;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 import javax.transaction.Transactional;
 
@@ -24,12 +25,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.scheduling.concurrent.ConcurrentTaskExecutor;
 
 import core.com.entities.jpaentities.ProductEntity;
 import core.com.entities.mongoentities.ProductDocument;
@@ -89,10 +90,8 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public TaskExecutor taskExecutor() {
-        SimpleAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor("spring_batch");
-        asyncTaskExecutor.setConcurrencyLimit(5);
-        return asyncTaskExecutor;
+    public TaskExecutor taskExecutor() {        
+       return new ConcurrentTaskExecutor(Executors.newFixedThreadPool(5));
     }
 
     @Bean
