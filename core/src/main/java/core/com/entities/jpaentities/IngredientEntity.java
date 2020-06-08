@@ -7,7 +7,6 @@ package core.com.entities.jpaentities;
 
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 /**
  * @author T.Menad
  */
@@ -23,18 +24,17 @@ import javax.persistence.Table;
 @Table(name="ingredient")
 public class IngredientEntity {
     @Id
+    @Type(type="uuid-binary")
+    @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
-    
-    @Column(length=2000)
-    private String id;
     
     @Column(name = "`rank`")
     private int rank;
-    
+        
     @Column(length=2000)
     private String text;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ProductEntity productEntity;
     
     /**
@@ -50,12 +50,10 @@ public class IngredientEntity {
      * @param text
      * @param productEntity
      */
-    public IngredientEntity(UUID uuid, String id, int rank, String text, ProductEntity productEntity) {
+    public IngredientEntity(UUID uuid, int rank, String text) {
         this.uuid = uuid;
-        this.id = id;
         this.rank = rank;
         this.text = text;
-        this.productEntity = productEntity;
     }
 
     /**
@@ -72,22 +70,6 @@ public class IngredientEntity {
      */
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
-    }
-
-    /**
-     * Getter for id.
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Setter for id.
-     * @param id the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
     }
 
 

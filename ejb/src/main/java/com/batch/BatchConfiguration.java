@@ -53,7 +53,7 @@ public class BatchConfiguration {
 
     @Autowired
     public ProductDocumentProcessor productDocumentProcessor;
-    
+
     @Autowired
     public MongoTemplate mongoTemplate;
 
@@ -90,14 +90,14 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public TaskExecutor taskExecutor() {        
-       return new ConcurrentTaskExecutor(Executors.newFixedThreadPool(5));
+    public TaskExecutor taskExecutor() {
+        return new ConcurrentTaskExecutor(Executors.newFixedThreadPool(this.getApplicationProperties().getNUMBER_THREADS()));
     }
 
     @Bean
     public Step importStep() throws Exception {
-        return stepBuilderFactory.get("importStep").<ProductDocument, ProductEntity> chunk(10).reader(mongoItemReader()).processor(
-                productDocumentProcessor).writer(productEntityWriter).taskExecutor(taskExecutor()).build();
+        return stepBuilderFactory.get("importStep").<ProductDocument, ProductEntity> chunk(this.getApplicationProperties().getCHUNK_SIZE())
+                .reader(mongoItemReader()).processor(productDocumentProcessor).writer(productEntityWriter).taskExecutor(taskExecutor()).build();
     }
 
     @Bean

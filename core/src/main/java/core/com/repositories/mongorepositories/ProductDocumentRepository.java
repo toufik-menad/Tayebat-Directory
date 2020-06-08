@@ -5,7 +5,7 @@
  */
 package core.com.repositories.mongorepositories;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,6 @@ import core.com.entities.mongoentities.ProductDocument;
 @Service
 public interface ProductDocumentRepository extends MongoRepository<ProductDocument, String>{
     
-   List<ProductDocument> findByCode(String  code);
+   Optional<ProductDocument> findBy_id(String  id);
 
 }
