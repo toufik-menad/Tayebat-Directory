@@ -39,22 +39,22 @@ public class ProductEntity {
     @Column()
     private String code;
     
-    @Column(length=200)
+    @Column(length=2000)
     private String product_name;
     
-    @Column(length=200)
+    @Column(length=2000)
     private String product_name_en;
     
-    @Column(length=200)
+    @Column(length=2000)
     private String product_name_fr;
     
-    @Column(length=200)
+    @Column(length=2000)
     private String product_name_it;
     
-    @Column(length=200)
+    @Column(length=2000)
     private String product_name_es;
     
-    @Column(length=200)
+    @Column(length=2000)
     private String product_name_de;
     
     @Column()
