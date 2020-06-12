@@ -31,7 +31,7 @@ public class IngredientEntity {
     @Column(name = "`rank`")
     private int rank;
         
-    @Column(length=2000)
+    @Column(length=20000)
     private String text;
     
     @ManyToOne(fetch = FetchType.LAZY)
