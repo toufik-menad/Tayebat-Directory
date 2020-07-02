@@ -16,10 +16,16 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.search.annotations.ContainedIn;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author T.Menad
  */
+@Indexed
 @Entity
 @Table(name="ingredient")
 public class IngredientEntity {
@@ -28,13 +34,17 @@ public class IngredientEntity {
     @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
     
+    @Field
     @Column(name = "`rank`")
     private int rank;
-        
+    
+    @Field
     @Column(length=15000)
     private String text;
     
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
+    @ContainedIn
     private ProductEntity productEntity;
     
     /**

@@ -19,7 +19,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 /**
  * @author T.Menad
@@ -37,46 +39,59 @@ public class ProductEntity {
     private UUID id;
     
     @Column()
+    @Field
     private String code;
     
+    @Field
     @Column(length=2000)
     private String product_name;
     
+    @Field
     @Column(length=2000)
     private String product_name_en;
     
+    @Field
     @Column(length=2000)
     private String product_name_fr;
     
+    @Field
     @Column(length=2000)
     private String product_name_it;
     
+    @Field
     @Column(length=2000)
     private String product_name_es;
     
+    @Field
     @Column(length=2000)
     private String product_name_de;
     
+    @IndexedEmbedded
     @Column()
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientEntity> ingredients_text = new ArrayList<>();
     
+    @IndexedEmbedded
     @Column()
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientEntity> ingredients_text_en = new ArrayList<>();
     
+    @IndexedEmbedded
     @Column()
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientEntity> ingredients_text_fr = new ArrayList<>();
     
+    @IndexedEmbedded
     @Column()
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientEntity> ingredients_text_it = new ArrayList<>();
     
+    @IndexedEmbedded
     @Column()
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientEntity> ingredients_text_es = new ArrayList<>();
     
+    @IndexedEmbedded
     @Column()
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientEntity> ingredients_text_de = new ArrayList<>();
