@@ -15,6 +15,7 @@ import org.hibernate.search.jpa.FullTextQuery;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 
+import com.enums.UnhalaalIngredient;
 import com.services.ProductSearchService;
 
 import org.apache.lucene.search.Query;
@@ -76,7 +77,7 @@ public class ProductSearchServiceImpl implements ProductSearchService<ProductEnt
                         .onField("code").matching(barCode)
                         .createQuery())
                       .must(queryBuilder.keyword()
-                        .onField("ingredients_text.text").matching("porc")
+                        .onField("ingredients_text.text").matching(UnhalaalIngredient.PROC.getName())
                         .createQuery())
                       .createQuery();
         

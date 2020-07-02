@@ -34,15 +34,15 @@ public class ProductEntityController {
     private ProductSearchService<ProductEntity> productSearchService;
     
     
-    @PostMapping("/getProductByBarCode")
+    @PostMapping("/{}")
     @ApiOperation(value="Gets a product by its barcode.")
-    public @ResponseBody ResponseEntity<List<ProductEntity>> getProductByBarCode(@RequestParam(name = "barCode")final String barCode){
+    public @ResponseBody ResponseEntity<List<ProductEntity>> getProductByBarCode(@RequestParam(name = "barcode")final String barCode){
         return ResponseEntity.ok(this.productSearchService.searchProductByBarCode(barCode));
     }
     
-    @PostMapping("/getClassification")
-    @ApiOperation(value="Gets a product by its barcode.")
-    public @ResponseBody ResponseEntity<List<ProductEntity>> getClassification(@RequestParam(name = "barCode")final String barCode){
+    @PostMapping("/classification/{}")
+    @ApiOperation(value="Checks product ingrdients.")
+    public @ResponseBody ResponseEntity<List<ProductEntity>> getClassification(@RequestParam(name = "barcode")final String barCode){
         return ResponseEntity.ok(this.productSearchService.searchIngredientByProduct(barCode));
     }
 
