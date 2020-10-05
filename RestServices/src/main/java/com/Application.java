@@ -48,7 +48,10 @@ public class Application implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
-      fullTextEntityManager.createIndexer().startAndWait();
+      fullTextEntityManager.createIndexer()
+      .idFetchSize(Integer.MIN_VALUE)
+      .threadsToLoadObjects(100)
+      .startAndWait();
         
     }
 }
